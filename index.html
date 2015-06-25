@@ -35,92 +35,77 @@
 
     <br>
     <br>
+    <div class="jumbotron">
+        <h1 class="text-center"><span class="label label-primary">Equipment Distribution Log</span></h1>
+    </div>
+
     <br>
     <br>
     <br>
 
     <div class="container">
-        <div class="row">
-
-            <div class="col-md-4 well">
+        <div class="row well">
+            <div class="col-md-4">
                 <form class="form-horizontal">
-                    <div class="control-group">
-                        <label class="control-label" for="inputDateOut">Date Out:</label>
-                        <div class="controls">
-                            <input type="text" id="inputDateOut" placeholder="Date of Distribution">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading text-center"><strong><ins>Distribute Equipment</ins></strong>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputTagDevice">Tag/Device:</label>
-                        <div class="controls">
-                            <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputPassword">Password</label>
-                        <div class="controls">
-                            <input type="text" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputPassword">Password</label>
-                        <div class="controls">
-                            <input type="text" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputPassword">Password</label>
-                        <div class="controls">
-                            <input type="text" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <button type="submit" class="btn">Save</button>
+                        <div class="panel-body">
+                            <div class="control-group">
+                                <label class="control-label" for="inputDateOut">Date Out:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputDateOut" placeholder="Date of Distribution">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputTagDevice">Tag/Device:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputMOSName">MOS Name:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First)">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputLocation">Location:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputLocation" placeholder="Location of Equipment">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputNotes">Notes:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
+
             </div>
 
 
-            <div class="col-md-7 col-md-offset-1 well">
-                <form class="form-horizontal">
-                    <div class="control-group">
-                        <label class="control-label" for="inputDateOut">Date Out:</label>
-                        <div class="controls">
-                            <input type="text" id="inputDateOut" placeholder="Date of Distribution">
-                        </div>
+            <div class="col-md-7 col-md-offset-1">
+
+                <div class="panel panel-danger">
+                    <div class="panel-heading text-center"><strong><ins>Equipment Still Out</ins></strong>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputTagDevice">Tag/Device:</label>
-                        <div class="controls">
-                            <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputPassword">Password</label>
-                        <div class="controls">
-                            <input type="text" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputPassword">Password</label>
-                        <div class="controls">
-                            <input type="text" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputPassword">Password</label>
-                        <div class="controls">
-                            <input type="text" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="controls">
-                            <button type="submit" class="btn">Save</button>
-                        </div>
-                    </div>
-                </form>
+                    <panel-body>
+                        <p>Equipment that is still <code>OUT</code> will be listed here.</p>
+                        <p><em>Click</em> the <code>RETURN</code> button to add back to inventory.</p>
+                    </panel-body>
+
+                </div>
+
             </div>
         </div>
     </div>

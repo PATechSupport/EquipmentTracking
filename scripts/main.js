@@ -16,6 +16,7 @@ $('#distribute').on('click', function () {
         name: '',
         command: '',
         location: '',
+        notes: '',
         dateIn: ''
     };
     ref.child('distributed').push(eqOut);

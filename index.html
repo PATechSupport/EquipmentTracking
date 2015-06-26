@@ -53,31 +53,31 @@
                             <div class="control-group">
                                 <label class="control-label" for="inputDateOut">Date Out:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputDateOut" placeholder="Date of Distribution">
+                                    <input type="text" id="inputDateOut" placeholder="Date of Distribution" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputTagDevice">Tag/Device:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device">
+                                    <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputMOSName">MOS Name:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First)">
+                                    <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First)" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputLocation">Location:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputLocation" placeholder="Location of Equipment">
+                                    <input type="text" id="inputLocation" placeholder="Location of Equipment" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputNotes">Notes:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD">
+                                    <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD" required>
                                 </div>
                             </div>
                             <br>
@@ -101,6 +101,11 @@
                     <panel-body>
                         <p>Equipment that is still <code>OUT</code> will be listed here.</p>
                         <p><em>Click</em> the <kbd>RETURN</kbd> button to add back to inventory.</p>
+                        <div>
+                            <ul class="list-group" id="eqOut">
+
+                            </ul>
+                        </div>
                     </panel-body>
 
                 </div>

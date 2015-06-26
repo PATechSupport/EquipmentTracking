@@ -2,9 +2,16 @@
 $(document).ready(function () {
 
     // Setup Firebase reference
-    var ref = new Firebase("https://eqlog.firebaseio.com/");
+    var ref = new Firebase("https://eqlog.firebaseio.com/distribute");
 
+    ref.once('value', function (snapshot) {
+        snapshot.forEach(function (childsnapshot) {
+            var key = childsnapshot.key();
+            var data = childsnapshot.val();
+            $('#eqOut').append("<li class='list-group-item'>Date Out: " + data.dateOut + "Tag/Device: " + data.tagDevice + "Name: " + data.name + "Location: " + data.location + "Notes: " + data.notes + " Days Overdue: <span class='badge'>#days Overdue</span></li>");
 
+        });
+    });
 
 
 

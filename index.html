@@ -26,7 +26,7 @@
             </li>
             <li><a id="distribute" href="#">Distribute</a>
             </li>
-            <li><a id="return" href="#">Return</a>
+            <li><a id="return" href="#">Returned Items</a>
             </li>
             <li><a href="#">About</a>
             </li>
@@ -53,7 +53,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="inputDateOut">Date Out:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputDateOut" placeholder="Date of Distribution" required>
+                                    <input type="date" id="inputDateOut" placeholder="Date of Distribution" required>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -103,7 +103,42 @@
                         <p><em>Click</em> the <kbd>RETURN</kbd> button to add back to inventory.</p>
                         <div>
                             <ul class="list-group" id="eqOut">
+                                <li class='list-group-item'>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                    Date Out:
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="row">
+                                                    data.dateOut
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                    Tag/Device:
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="row">
+                                                    data.tagDevice
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            Notes:
+                                        </div>
+                                        <div class="divider"></div>
+                                        <div class="row">
+                                            data.notes
+                                        </div>
 
+                                    </div>
+                                    " + + " " + data.tagDevice + "Name: " + data.name + "Location: " + data.location + "Notes: " + data.notes + "Key: " + key + "<span class='badge'>#days Overdue</span>
+                                    <button class='btn btn-primary btn-sm return'>Returned</button>
+                                </li>
                             </ul>
                         </div>
                     </panel-body>
@@ -118,6 +153,7 @@
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
     <script src="scripts/main.js"></script>

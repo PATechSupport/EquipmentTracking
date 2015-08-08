@@ -45,48 +45,50 @@
     <div class="container">
         <div class="row well">
             <div class="col-md-4">
-                <form class="form-horizontal">
+                <form class="form-horizontal" id="equipEntry">
                     <div class="panel panel-primary">
                         <div class="panel-heading text-center"><strong><ins>Distribute Equipment</ins></strong>
                         </div>
-                        <div class="panel-body">
-                            <div class="control-group">
-                                <label class="control-label" for="inputDateOut">Date Out:</label>
-                                <div class="controls">
-                                    <input type="date" id="inputDateOut" placeholder="Date of Distribution" required>
+                        <fieldset>
+                            <div class="panel-body">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputDateOut">Date Out:</label>
+                                    <div class="controls">
+                                        <input type="date" id="inputDateOut" placeholder="Date of Distribution" required>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputTagDevice">Tag/Device:</label>
+                                    <div class="controls">
+                                        <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device" required>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputMOSName">MOS Name:</label>
+                                    <div class="controls">
+                                        <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First)" required>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputLocation">Location:</label>
+                                    <div class="controls">
+                                        <input type="text" id="inputLocation" placeholder="Location of Equipment" required>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputNotes">Notes:</label>
+                                    <div class="controls">
+                                        <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD" required>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" id="save" class="btn btn-success">Save</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="control-group">
-                                <label class="control-label" for="inputTagDevice">Tag/Device:</label>
-                                <div class="controls">
-                                    <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device" required>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label" for="inputMOSName">MOS Name:</label>
-                                <div class="controls">
-                                    <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First)" required>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label" for="inputLocation">Location:</label>
-                                <div class="controls">
-                                    <input type="text" id="inputLocation" placeholder="Location of Equipment" required>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label" for="inputNotes">Notes:</label>
-                                <div class="controls">
-                                    <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD" required>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="control-group">
-                                <div class="controls">
-                                    <button type="submit" id="save" class="btn btn-success">Save</button>
-                                </div>
-                            </div>
-                        </div>
+                        </fieldset>
                     </div>
                 </form>
 

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -19,7 +19,7 @@
 <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <ul class="nav navbar-nav ">
+        <ul class="nav navbar-nav">
             <li id="PDLogo">
                 <a href="#"><img src="images/NYPD1Logo.png">
                 </a>
@@ -45,53 +45,50 @@
     <div class="container">
         <div class="row well">
             <div class="col-md-4">
-                <form class="form-horizontal" id="equipEntry">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading text-center"><strong><ins>Distribute Equipment</ins></strong>
-                        </div>
-                        <fieldset>
-                            <div class="panel-body">
-                                <div class="control-group">
-                                    <label class="control-label" for="inputDateOut">Date Out:</label>
-                                    <div class="controls">
-                                        <input type="date" id="inputDateOut" placeholder="Date of Distribution" required>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputTagDevice">Tag/Device:</label>
-                                    <div class="controls">
-                                        <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device" required>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputMOSName">MOS Name:</label>
-                                    <div class="controls">
-                                        <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First)" required>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputLocation">Location:</label>
-                                    <div class="controls">
-                                        <input type="text" id="inputLocation" placeholder="Location of Equipment" required>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="inputNotes">Notes:</label>
-                                    <div class="controls">
-                                        <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD" required>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <button type="submit" id="save" class="btn btn-success">Save</button>
-                                    </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center"><strong><ins>Distribute Equipment</ins></strong>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" id="equipEntry">
+                            <div class="control-group">
+                                <label class="control-label" for="inputDateOut">Date Out:</label>
+                                <div class="controls">
+                                    <input type="date" id="inputDateOut" placeholder="Date of Distribution" required>
                                 </div>
                             </div>
-                        </fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="inputTagDevice">Tag/Device:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device " required>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputMOSName">MOS Name:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First) " required>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputLocation">Location:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputLocation" placeholder="Location of Equipment " required>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="inputNotes">Notes:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD " required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="submit" id="save" class="btn btn-success">Save</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
-
+                </div>
             </div>
 
 
@@ -138,7 +135,6 @@
                                         </div>
 
                                     </div>
-                                    " + + " " + data.tagDevice + "Name: " + data.name + "Location: " + data.location + "Notes: " + data.notes + "Key: " + key + "<span class='badge'>#days Overdue</span>
                                     <button class='btn btn-primary btn-sm return'>Returned</button>
                                 </li>
                             </ul>
@@ -155,9 +151,9 @@
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 

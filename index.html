@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Equipment Tracking</title>
+
     <!-- Latest compiled and minified CSS -->
-    <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
 
     <!-- Optional theme -->
@@ -19,14 +19,14 @@
 <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <ul class="nav navbar-nav ">
+        <ul class="nav navbar-nav">
             <li id="PDLogo">
                 <a href="#"><img src="images/NYPD1Logo.png">
                 </a>
             </li>
             <li><a id="distribute" href="#">Distribute</a>
             </li>
-            <li><a id="return" href="#">Return</a>
+            <li><a id="return" href="#">Returned Items</a>
             </li>
             <li><a href="#">About</a>
             </li>
@@ -41,19 +41,18 @@
 
     <br>
 
-
     <div class="container">
         <div class="row well">
             <div class="col-md-4">
-                <form class="form-horizontal">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading text-center"><strong><ins>Distribute Equipment</ins></strong>
-                        </div>
-                        <div class="panel-body">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center"><strong><ins>Distribute Equipment</ins></strong>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" id="equipEntry">
                             <div class="control-group">
                                 <label class="control-label" for="inputDateOut">Date Out:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputDateOut" placeholder="Date of Distribution" required>
+                                    <input type="date" id="inputDateOut" placeholder="Date of Distribution" required>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -86,12 +85,10 @@
                                     <button type="submit" id="save" class="btn btn-success">Save</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </form>
-
+                </div>
             </div>
-
 
             <div class="col-md-7 col-md-offset-1">
 
@@ -103,7 +100,6 @@
                         <p><em>Click</em> the <kbd>RETURN</kbd> button to add back to inventory.</p>
                         <div>
                             <ul class="list-group" id="eqOut">
-
                             </ul>
                         </div>
                     </panel-body>
@@ -114,12 +110,12 @@
         </div>
     </div>
 
-
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+    <!--    <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.js"></script>-->
     <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 

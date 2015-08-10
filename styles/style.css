@@ -4,3 +4,9 @@
     margin-top: -15px;
     margin-bottom: -15px;
 }
+
+.overdue {
+    margin-left: 10px;
+    vertical-align: top;
+    background-color: #ff8000;
+}

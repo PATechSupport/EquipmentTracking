@@ -1,0 +1,9 @@
+{
+  "firebase": "eqlog",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

@@ -4,12 +4,18 @@
     margin-top: -15px;
     margin-bottom: -15px;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 .overdue {
     margin-left: 10px;
     vertical-align: top;
     background-color: #ff8000;
+}
+
+#eqOut .well {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#eqInstructions p {
+    margin-left: 10px;
 }

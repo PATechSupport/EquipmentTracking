@@ -7,12 +7,13 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Equipment Tracking</title>
+
     <!-- Latest compiled and minified CSS -->
-    <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -26,7 +27,7 @@
             </li>
             <li><a id="distribute" href="#">Distribute</a>
             </li>
-            <li><a id="return" href="#">Returned Items</a>
+            <li><a id="log" href="#">Log</a>
             </li>
             <li><a href="#">About</a>
             </li>
@@ -40,7 +41,6 @@
     </div>
 
     <br>
-
 
     <div class="container">
         <div class="row well">
@@ -59,25 +59,25 @@
                             <div class="control-group">
                                 <label class="control-label" for="inputTagDevice">Tag/Device:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device " required>
+                                    <input type="text" id="inputTagDevice" placeholder="Tag #/Type of Device" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputMOSName">MOS Name:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First) " required>
+                                    <input type="text" id="inputMOSName" placeholder="MOS Name (Last, First)" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputLocation">Location:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputLocation" placeholder="Location of Equipment " required>
+                                    <input type="text" id="inputLocation" placeholder="Location of Equipment" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputNotes">Notes:</label>
                                 <div class="controls">
-                                    <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD " required>
+                                    <input type="text" id="inputNotes" placeholder="ex.- Will return on MM/DD" required>
                                 </div>
                             </div>
                             <br>
@@ -91,55 +91,18 @@
                 </div>
             </div>
 
-
             <div class="col-md-7 col-md-offset-1">
 
                 <div class="panel panel-danger">
                     <div class="panel-heading text-center"><strong><ins>Equipment Still Out</ins></strong>
                     </div>
                     <panel-body>
-                        <p>Equipment that is still <code>OUT</code> will be listed here.</p>
-                        <p><em>Click</em> the <kbd>RETURN</kbd> button to add back to inventory.</p>
+                        <div id="eqInstructions">
+                            <p>Equipment that is still <code>OUT</code> will be listed here.</p>
+                            <p><em>Click</em> the <kbd>RETURN</kbd> button to add back to inventory.</p>
+                        </div>
                         <div>
                             <ul class="list-group" id="eqOut">
-<<<<<<< HEAD
-                                <li class='list-group-item'>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="row">
-                                                    Date Out:
-                                                </div>
-                                                <div class="divider"></div>
-                                                <div class="row">
-                                                    data.dateOut
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="row">
-                                                    Tag/Device:
-                                                </div>
-                                                <div class="divider"></div>
-                                                <div class="row">
-                                                    data.tagDevice
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            Notes:
-                                        </div>
-                                        <div class="divider"></div>
-                                        <div class="row">
-                                            data.notes
-                                        </div>
-
-                                    </div>
-                                    <button class='btn btn-primary btn-sm return'>Returned</button>
-                                </li>
-=======
->>>>>>> master
                             </ul>
                         </div>
                     </panel-body>
@@ -150,13 +113,13 @@
         </div>
     </div>
 
-
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+    <!--    <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.js"></script>-->
     <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 

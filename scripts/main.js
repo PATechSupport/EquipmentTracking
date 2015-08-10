@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     // Setup Firebase reference
     var ref = new Firebase("https://eqlog.firebaseio.com/distributed");
+<<<<<<< HEAD
     //    var equipmentOut;
     //    var list = [];
     //    var item = {};

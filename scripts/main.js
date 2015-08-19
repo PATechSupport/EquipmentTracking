@@ -44,7 +44,8 @@ $(document).ready(function () {
 
         // Check to make sure the form is valid before pushing the item to Firebase's DB.
         equipmentOut = {
-            dateOut: $('#inputDateOut').val(),
+            //dateOut: $('#inputDateOut').val(),
+            dateOut: Firebase.ServerValue.TIMESTAMP,
             tagDevice: $('#inputTagDevice').val(),
             name: $('#inputMOSName').val(),
             location: $('#inputLocation').val(),
@@ -95,10 +96,11 @@ $(document).ready(function () {
             // Only display the items that have NOT been returned by checking dateIn.
             if (data.dateIn === "") {
                 // Store the amount of time the item has been out formatted with moment.js
-                var daysOut = moment(data.dateOut, "YYYYMMDD").fromNow();
+                //var daysOut = moment(data.dateOut, "YYYYMMDD").fromNow();
+                var daysOut = moment(moment(data.dateOut).format("MM-DD-YYYY hh:mm A")).fromNow();
                 // Append each item to the unordered list <ul> with html id='eqOUT'.
                 $('#eqOut').append(
-                    "<li class='list-group-item' ><div class='well'>Date Out: <strong>" + data.dateOut + "</strong><span class='badge overdue'>Borrowed " + daysOut + "</span><br>Tag/Device: <strong>" + data.tagDevice + "</strong><br>Name: <strong>" + data.name + "</strong><br>Location: <strong>" + data.location + "</strong><br>Notes: <strong>" + data.notes + "</strong><br><br><button class='btn btn-primary btn-sm return' data-key=" + key + ">Returned</button></div></li>");
+                    "<li class='list-group-item' ><div class='well'>Date Out: <strong>" + moment(data.dateOut).format("MM-DD-YYYY hh:mm A") + "</strong><span class='badge overdue'>Borrowed " + daysOut + "</span><br>Tag/Device: <strong>" + data.tagDevice + "</strong><br>Name: <strong>" + data.name + "</strong><br>Location: <strong>" + data.location + "</strong><br>Notes: <strong>" + data.notes + "</strong><br><br><button class='btn btn-primary btn-sm return' data-key=" + key + ">Returned</button></div></li>");
             }
         });
     });

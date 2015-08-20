@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     // Setup Firebase reference
     var ref = new Firebase("https://eqlog.firebaseio.com/distributed");
-    var equipmentOut;
+    var equipmentOut, email, password, user, rememberUser;
 
     var Auth = {
         createUser: function newUser(email, password) {
@@ -11,31 +11,32 @@ $(document).ready(function () {
                 password: password
             }, function (error, userData) {
                 if (error) {
-                    toastr.error("Error creating user:", error);
+                    toastr.error("Error creating user:" + error);
                 } else {
-                    toastr.success("Successfully created user account with uid:", userData.uid);
+                    user = userData;
+                    toastr.success("Successfully created user account with uid:" + userData.password.email);
                 }
             });
         },
 
-        logIn: function logIn(email, password) {
-
-
+        logIn: function logIn(email, password, rememberUser) {
             ref.authWithPassword({
                 email: email,
                 password: password
             }, function (error, authData) {
                 if (error) {
-                    toastr.error("Login Failed!", error);
+                    toastr.error("Login Failed!" + error);
                 } else {
-                    toastr.success("Authenticated successfully with payload:", authData);
+                    toastr.success("Authenticated successfully with email:" + authData.password.email);
+                    $('#modalLogin').modal('hide');
                 }
-            });
+            }, {
+                remember: rememberUser
+
+            })
         },
 
         changePassword: function changePassword(email, oldPassword, newPassword) {
-
-
             ref.changePassword({
                 email: email,
                 oldPassword: oldPassword,
@@ -44,21 +45,20 @@ $(document).ready(function () {
                 if (error === null) {
                     toastr.error("Password changed successfully");
                 } else {
-                    toastr.success("Error changing password:", error);
+                    toastr.success("Error changing password:" + error);
                 }
             });
 
         },
 
         passwordReset: function passwordReset(email) {
-
             ref.resetPassword({
                 email: email
             }, function (error) {
                 if (error === null) {
                     toastr.error("Password reset email sent successfully");
                 } else {
-                    toastr.success("Error sending password reset email:", error);
+                    toastr.success("Error sending password reset email:" + error);
                 }
             });
         },
@@ -80,8 +80,18 @@ $(document).ready(function () {
         toastr.success('About Clicked!');
     });
 
-    $('#login').click(function loginOnClick() {
-        toastr.success('Login Clicked!');
+    $('#btnLogin').click(function loginOnClick() {
+        email = $('#userEmail').val();
+        password = $('#userPassword').val();
+        rememberUser = $('#rememberUser').val();
+        if (!$('#rememberUser').is(':checked')) {
+            rememberUser = "sessionOnly";
+        }
+        Auth.logIn(email, password, rememberUser);
+    });
+
+    $('#register').click(function register(email, password) {
+        Auth.createUser("william.twachtman@nypd.org", "Academy1");
     });
 
     $('#changePassword').click(function changePassword() {
@@ -90,6 +100,15 @@ $(document).ready(function () {
 
     $('#logout').click(function logout() {
         toastr.success('Logout Clicked!');
+    });
+
+    $('#forgotPassword').click(function forgotPassword() {
+        email = $('#userEmail').val();
+        if (email) {
+            Auth.passwordReset(email);
+        } else {
+            toastr.error('You MUST enter an Email address!');
+        }
     });
 
 

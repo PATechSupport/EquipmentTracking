@@ -4,30 +4,29 @@
     margin-top: 10px;
     margin-left: 15px;
 }
-
 #collapsableNav li {
     margin-top: 5px;
 }
-
 .overdue {
     margin-left: 10px;
     vertical-align: top;
     background-color: #ff8000;
 }
-
 #eqOut .well {
     margin-top: auto;
     margin-bottom: auto;
 }
-
 #eqInstructions p {
     margin-left: 10px;
 }
-
 .navbar-right {
     margin-right: 15px;
 }
-
 .navbar ul {
     margin-left: 15px;
+}
+.modal-header {
+    background-color: #265a88;
+    color: aliceblue;
+    text-align: center;
 }

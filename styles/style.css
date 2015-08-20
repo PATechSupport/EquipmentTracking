@@ -1,8 +1,12 @@
 #PDLogo img {
     height: 40px;
     width: auto;
-    margin-top: -15px;
-    margin-bottom: -15px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#collapsableNav li {
+    margin-top: 5px;
 }
 
 .overdue {
@@ -18,4 +22,12 @@
 
 #eqInstructions p {
     margin-left: 10px;
+}
+
+.navbar-right {
+    margin-right: 15px;
+}
+
+.navbar ul {
+    margin-left: 15px;
 }

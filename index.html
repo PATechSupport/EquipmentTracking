@@ -20,18 +20,48 @@
 <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <ul class="nav navbar-nav">
-            <li id="PDLogo">
-                <a href="#"><img src="images/NYPD1Logo.png">
-                </a>
-            </li>
-            <li><a id="distribute" href="#">Distribute</a>
-            </li>
-            <li><a id="log" href="#">Log</a>
-            </li>
-            <li><a href="#">About</a>
-            </li>
-        </ul>
+        <div class="navbar-header">
+            <div id="PDLogo">
+                <img src="images/NYPD1Logo.png">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsableNav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="collapsableNav">
+            <nav class="nav navbar-nav navbar-inverse navbar-left">
+
+                <ul class="nav navbar-nav">
+                    <li><a id="distribute" href="#">Distribute</a>
+                    </li>
+                    <li><a id="log" href="#">Log</a>
+                    </li>
+                    <li><a href="#">About</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+            <nav class="nav navbar-nav navbar-inverse navbar-right">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Login</a>
+                    </li>
+                    <li><a href="#">Change Password</a>
+                    </li>
+                    <li><a href="#">Logout</a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
     </nav>
 
     <br>
@@ -51,7 +81,7 @@
                     <div class="panel-body">
                         <form class="form-horizontal" id="equipEntry">
                             <div class="control-group">
-<!--
+                                <!--
 <label class="control-label" for="inputDateOut">Date Out:</label>
 <div class="controls">
     <input type="date" id="inputDateOut" placeholder="Date of Distribution" required>

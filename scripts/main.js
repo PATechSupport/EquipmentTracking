@@ -66,11 +66,31 @@ $(document).ready(function () {
         logOut: function logOut() {
             ref.unauth();
         }
-
-            return Auth;
     };
 
+    $('#distribute').click(function distribute() {
+        toastr.success('Distribute Clicked!');
+    });
 
+    $('#log').click(function log() {
+        toastr.success('Log Clicked!');
+    });
+
+    $('#about').click(function about() {
+        toastr.success('About Clicked!');
+    });
+
+    $('#login').click(function loginOnClick() {
+        toastr.success('Login Clicked!');
+    });
+
+    $('#changePassword').click(function changePassword() {
+        toastr.success('Change Password Clicked!');
+    });
+
+    $('#logout').click(function logout() {
+        toastr.success('Logout Clicked!');
+    });
 
 
 

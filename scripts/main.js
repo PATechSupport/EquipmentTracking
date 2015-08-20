@@ -4,6 +4,76 @@ $(document).ready(function () {
     var ref = new Firebase("https://eqlog.firebaseio.com/distributed");
     var equipmentOut;
 
+    var Auth = {
+        createUser: function newUser(email, password) {
+            ref.createUser({
+                email: email,
+                password: password
+            }, function (error, userData) {
+                if (error) {
+                    toastr.error("Error creating user:", error);
+                } else {
+                    toastr.success("Successfully created user account with uid:", userData.uid);
+                }
+            });
+        },
+
+        logIn: function logIn(email, password) {
+
+
+            ref.authWithPassword({
+                email: email,
+                password: password
+            }, function (error, authData) {
+                if (error) {
+                    toastr.error("Login Failed!", error);
+                } else {
+                    toastr.success("Authenticated successfully with payload:", authData);
+                }
+            });
+        },
+
+        changePassword: function changePassword(email, oldPassword, newPassword) {
+
+
+            ref.changePassword({
+                email: email,
+                oldPassword: oldPassword,
+                newPassword: newPassword
+            }, function (error) {
+                if (error === null) {
+                    toastr.error("Password changed successfully");
+                } else {
+                    toastr.success("Error changing password:", error);
+                }
+            });
+
+        },
+
+        passwordReset: function passwordReset(email) {
+
+            ref.resetPassword({
+                email: email
+            }, function (error) {
+                if (error === null) {
+                    toastr.error("Password reset email sent successfully");
+                } else {
+                    toastr.success("Error sending password reset email:", error);
+                }
+            });
+        },
+
+        logOut: function logOut() {
+            ref.unauth();
+        }
+
+            return Auth;
+    };
+
+
+
+
+
     // Return items by getting it's unique key from the button's data attribute.  Use key to update dateIn value with current date.
     $('#eqOut').on('click', '.return', function returnItem() {
 

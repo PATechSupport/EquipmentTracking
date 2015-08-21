@@ -2,9 +2,25 @@ $(document).ready(function () {
 
     // Setup Firebase reference
     var ref = new Firebase("https://eqlog.firebaseio.com/distributed");
-    var equipmentOut, email, password, user, rememberUser;
+    var auth = null;
+    var equipmentOut, email, password, verifyPassword, user, rememberUser;
+
+
+    $('#login').show();
+    $('#register').show();
+    $('#changePassword').hide();
+    $('#logout').hide();
+    $('#gravatar').hide();
+    $('#save').prop('disabled', true);
+
+
 
     var Auth = {
+
+
+        signedIn: function signedIn() {
+            return auth;
+        },
         createUser: function newUser(email, password) {
             ref.createUser({
                 email: email,
@@ -28,12 +44,22 @@ $(document).ready(function () {
                     toastr.error("Login Failed!" + error);
                 } else {
                     toastr.success("Authenticated successfully with email:" + authData.password.email);
+                    $('#gravatar').attr('src', authData.password.profileImageURL).show();
                     $('#modalLogin').modal('hide');
+                    $('#login').hide();
+                    $('#register').hide();
+                    $('#changePassword').show();
+                    $('#logout').show();
+                    $('#gravatar').show();
+                    $('#save').prop('disabled', false);
+                    $('.return').prop('disabled', false);
+                    $('.edit').prop('disabled', false);
+                    auth = authData;
                 }
             }, {
                 remember: rememberUser
 
-            })
+            });
         },
 
         changePassword: function changePassword(email, oldPassword, newPassword) {
@@ -65,6 +91,7 @@ $(document).ready(function () {
 
         logOut: function logOut() {
             ref.unauth();
+            auth = null;
         }
     };
 
@@ -90,16 +117,32 @@ $(document).ready(function () {
         Auth.logIn(email, password, rememberUser);
     });
 
-    $('#register').click(function register(email, password) {
-        Auth.createUser("william.twachtman@nypd.org", "Academy1");
+    $('#btnRegister').click(function register(email, password) {
+        email = $('#regEmail').val();
+        password = $('#regPassword').val();
+        verifyPassword = $('#verifyUserPassword').val();
+        if (password === verifyPassword) {
+            Auth.createUser(email, password);
+        } else {
+            toastr.error('Passwords DO NOT match!', 'CHECK PASSWORDS!');
+        }
+
     });
 
-    $('#changePassword').click(function changePassword() {
+    $('#btnchangePassword').click(function changePassword() {
         toastr.success('Change Password Clicked!');
     });
 
     $('#logout').click(function logout() {
-        toastr.success('Logout Clicked!');
+        Auth.logOut();
+        $('#login').show();
+        $('#register').show();
+        $('#changePassword').hide();
+        $('#logout').hide();
+        $('#gravatar').hide();
+        $('#save').prop('disabled', true);
+        $('.return').prop('disabled', true);
+        $('.edit').prop('disabled', true);
     });
 
     $('#forgotPassword').click(function forgotPassword() {
@@ -128,6 +171,18 @@ $(document).ready(function () {
         ref.child(returnedItemKey).update({
             dateIn: dateReturned
         }, onComplete);
+
+    });
+
+    $('#eqOut').on('click', '.edit', function editItem() {
+        // Create variables to store the item's key, and date returned.
+        var editItemKey = $(this).data('key');
+
+        console.log($(this).data('key'));
+        //        ref.child(editItemKey).update({
+        //            dateIn: dateReturned
+        //        }, onComplete);
+        console.log('Edit Item.....');
 
     });
 
@@ -209,8 +264,14 @@ $(document).ready(function () {
                 var daysOut = moment(moment(data.dateOut).format("MM-DD-YYYY hh:mm A")).fromNow();
                 // Append each item to the unordered list <ul> with html id='eqOUT'.
                 $('#eqOut').append(
-                    "<li class='list-group-item' ><div class='well'>Date Out: <strong>" + moment(data.dateOut).format("MM-DD-YYYY hh:mm A") + "</strong><span class='badge overdue'>Borrowed " + daysOut + "</span><br>Tag/Device: <strong>" + data.tagDevice + "</strong><br>Name: <strong>" + data.name + "</strong><br>Location: <strong>" + data.location + "</strong><br>Notes: <strong>" + data.notes + "</strong><br><br><button class='btn btn-primary btn-sm return' data-key=" + key + ">Returned</button></div></li>");
+                    "<li class='list-group-item' ><div class='well'>Date Out: <strong>" + moment(data.dateOut).format("MM-DD-YYYY hh:mm A") + "</strong><span class='badge overdue'>Borrowed " + daysOut + "</span><br>Tag/Device: <strong>" + data.tagDevice + "</strong><br>Name: <strong>" + data.name + "</strong><br>Location: <strong>" + data.location + "</strong><br>Notes: <strong>" + data.notes + "</strong><br><button class='btn btn-warning btn-sm edit' data-toggle='modal' data-target='#modalEdit' data-key=" + key + ">Edit</button><button class='btn btn-primary btn-sm return pull-right' data-key=" + key + ">Return</button></div></li>");
+            }
+            if (!Auth.signedIn()) {
+                $('.return').prop('disabled', true);
+                $('.edit').prop('disabled', true);
             }
         });
     });
+
+
 });

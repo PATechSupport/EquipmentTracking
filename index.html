@@ -46,17 +46,18 @@
                 </ul>
 
             </nav>
-
             <nav class="nav navbar-nav navbar-inverse navbar-right">
 
                 <ul class="nav navbar-nav">
                     <li><a id="login" data-toggle="modal" data-target="#modalLogin" href="#">Login</a>
                     </li>
-                    <li><a id="register" href="#">Register</a>
+                    <li><a id="register" data-toggle="modal" data-target="#modalRegister" href="#">Register</a>
                     </li>
-                    <li><a id="changePassword" href="#">Change Password</a>
+                    <li><a id="changePassword" data-toggle="modal" data-target="#modalChangePassword" href="#" hidden>Change Password</a>
                     </li>
-                    <li><a id="logout" href="#">Logout</a>
+                    <li><a id="logout" href="#" hidden>Logout</a>
+                    </li>
+                    <li> <img id="gravatar" class="img-circle" hidden>
                     </li>
                 </ul>
 
@@ -117,7 +118,7 @@
                             <br>
                             <div class="control-group">
                                 <div class="controls">
-                                    <button type="submit" id="save" class="btn btn-success">Save</button>
+                                    <button disabled type="submit" id="save" class="btn btn-success">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -151,7 +152,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
                     <h4 class="modal-title">Login</h4>
                 </div>
                 <div class="modal-body">
@@ -183,26 +185,27 @@
     <!-- /.modal -->
 
     <!--                                        REGISTER FORM                                  -->
-    <div id="modalLogin" class="modal fade">
+    <div id="modalRegister" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
                     <h4 class="modal-title">REGISTER</h4>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="userEmail" class="control-label">Email:</label>
-                            <input id="userEmail" class="form-control" type="text" placeholder="Enter your Email to Login." required>
+                            <label for="regEmail" class="control-label">Email:</label>
+                            <input id="regEmail" class="form-control" type="text" placeholder="Enter your Email." required>
                         </div>
                         <div>
-                            <label for="userPassword" class="control-label">Password:</label>
-                            <input id="userPassword" class="form-control" type="password" required>
+                            <label for="regPassword" class="control-label">Password:</label>
+                            <input id="regPassword" class="form-control" type="password" placeholder="Enter your Password." required>
                         </div>
                         <div>
-                            <label for="verifyUserPassword" class="control-label">Retype Password:</label>
-                            <input id="verifyUserPassword" class="form-control" type="password" required>
+                            <label for="verifyUserPassword" class="control-label">Confirm Password:</label>
+                            <input id="verifyUserPassword" class="form-control" type="password" placeholder="Confirm your Password." required>
                         </div>
                     </form>
 
@@ -210,7 +213,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="btnLogin" type="button" class="btn btn-primary">Log In</button>
+                    <button id="btnRegister" type="button" class="btn btn-success">Create Account</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -218,6 +221,108 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+    <!--                                        CHANGE PASSWORD FORM                                  -->
+    <div id="modalChangePassword" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">CHANGE PASSWORD</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="oldEmail" class="control-label">Old Password:</label>
+                            <input id="oldEmail" class="form-control" type="password" placeholder="Enter your OLD password." required>
+                        </div>
+                        <div>
+                            <label for="newPassword" class="control-label">New Password:</label>
+                            <input id="newPassword" class="form-control" type="password" placeholder="Enter your NEW password." required>
+                        </div>
+                        <div>
+                            <label for="verifyNewPassword" class="control-label">Confirm Password:</label>
+                            <input id="verifyNewPassword" class="form-control" type="password" placeholder="Confirm your NEW password." required>
+                        </div>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btnRegister" type="button" class="btn btn-success">Change Password</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!--                                        EDIT FORM                                  -->
+    <div id="modalEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">EDIT ITEM</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="equipEdit">
+                        <div class="control-group">
+
+                            <label class="control-label" for="editDateOut">Date Out:</label>
+                            <div class="controls">
+                                <input type="datetime" id="editDateOut" placeholder="Date of Distribution" required>
+                            </div>
+
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="editTagDevice">Tag/Device:</label>
+                            <div class="controls">
+                                <input type="text" id="editTagDevice" placeholder="Tag #/Type of Device" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="editMOSName">MOS Name:</label>
+                            <div class="controls">
+                                <input type="text" id="editMOSName" placeholder="MOS Name (Last, First)" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="editLocation">Location:</label>
+                            <div class="controls">
+                                <input type="text" id="editLocation" placeholder="Location of Equipment" required>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="editNotes">Notes:</label>
+                            <div class="controls">
+                                <input type="text" id="editNotes" placeholder="ex.- Will return on MM/DD" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button disabled type="submit" id="save" class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btnRegister" type="button" class="btn btn-success">Change Password</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
     <!--    <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.js"></script>-->
     <!-- Latest compiled and minified JavaScript -->

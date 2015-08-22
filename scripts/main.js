@@ -2,8 +2,8 @@ $(document).ready(function () {
 
     // Setup Firebase reference
     var ref = new Firebase("https://eqlog.firebaseio.com/distributed");
-    var auth = null;
-    var equipmentOut, email, password, verifyPassword, user, rememberUser;
+    var user = null;
+    var equipmentOut, email, password, verifyPassword, rememberUser;
 
 
     $('#login').show();
@@ -13,24 +13,25 @@ $(document).ready(function () {
     $('#gravatar').hide();
     $('#save').prop('disabled', true);
 
-
-
     var Auth = {
 
-
+        getUser: function getUser() {
+            return user;
+        },
         signedIn: function signedIn() {
-            return auth;
+            return (user ? true : false);
         },
         createUser: function newUser(email, password) {
             ref.createUser({
                 email: email,
                 password: password
-            }, function (error, userData) {
+            }, function (error, authData) {
                 if (error) {
                     toastr.error("Error creating user:" + error);
                 } else {
                     user = userData;
-                    toastr.success("Successfully created user account with uid:" + userData.password.email);
+                    toastr.success("Successfully created user account with email: " + authData.password.email);
+                    this.logIn(authData.email, authData.password, "default");
                 }
             });
         },
@@ -54,7 +55,7 @@ $(document).ready(function () {
                     $('#save').prop('disabled', false);
                     $('.return').prop('disabled', false);
                     $('.edit').prop('disabled', false);
-                    auth = authData;
+                    user = authData;
                 }
             }, {
                 remember: rememberUser
@@ -91,7 +92,7 @@ $(document).ready(function () {
 
         logOut: function logOut() {
             ref.unauth();
-            auth = null;
+            user = null;
         }
     };
 
@@ -182,6 +183,39 @@ $(document).ready(function () {
         //        ref.child(editItemKey).update({
         //            dateIn: dateReturned
         //        }, onComplete);
+        //        ref.child(editItemKey).update({
+        //            dateIn: dateReturned
+        //        }, onComplete);
+        equipmentOut = ref.child(editItemKey);
+        $('#editDateOut').val(equipmentOut.dateOut);
+        $('#editTagDevice').val(equipmentOut.tagDevice);
+        $('#editMOSName').val(equipmentOut.name);
+        $('#editLocation').val(equipmentOut.location);
+        $('#editNotes').val(equipmentOut.notes);
+        $('#dateIn').val(equipmentOut.dateIn);
+    });
+
+    $('#btnEdit').click(function editSave(equipmentOut) {
+        var valid = true;
+        var missingInfo;
+        for (var property in equipmentOut) {
+            if (equipmentOut.hasOwnProperty(property)) {
+                // dCheck to make sure the form is valid before pushing the item to Firebase's DB.
+                if (equipmentOut[property] === "" && property != "dateIn" && valid) {
+                    valid = !valid;
+                    missingInfo = property;
+                }
+                console.log(equipmentOut[property]);
+            }
+        }
+        if (valid) {
+            ref.child(returnedItemKey).update(equipmentOut, onComplete);
+        } else {
+            // Notifiy user that the form is NOT complete.
+            toastr.error("Please CHECK that ALL Form fields are filled in!", "'AH SNAP!  Looks like you forgot to fill in " + missingInfo + ".");
+
+            return false;
+        }
         console.log('Edit Item.....');
 
     });
@@ -214,14 +248,17 @@ $(document).ready(function () {
             name: $('#inputMOSName').val(),
             location: $('#inputLocation').val(),
             notes: $('#inputNotes').val(),
-            dateIn: ''
+            dateIn: '',
+            lendingMOS: user.password.email,
+            receivingMOS: '',
+            modifyingMOS: ''
         };
         var valid = true;
         var missingInfo;
         for (var property in equipmentOut) {
             if (equipmentOut.hasOwnProperty(property)) {
                 // dCheck to make sure the form is valid before pushing the item to Firebase's DB.
-                if (equipmentOut[property] === "" && property != "dateIn" && valid) {
+                if (equipmentOut[property] === "" && property != "dateIn" && property != "receivingMOS" && property != "modifyingMOS" && valid) {
                     valid = !valid;
                     missingInfo = property;
                 }
